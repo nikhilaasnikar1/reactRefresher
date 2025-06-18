@@ -1,0 +1,33 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "add npm to project",
+  "source": "index.html",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhilaasnikar1/reactRefresher.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "nikhil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikhilaasnikar1/reactRefresher/issues"
+  },
+  "homepage": "https://github.com/nikhilaasnikar1/reactRefresher#readme",
+  "devDependencies": {
+    "parcel": "^2.10.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserslist":[
+    "last 2 versions"
+  ]
+}

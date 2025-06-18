@@ -1,0 +1,75 @@
+/* .app{
+    background-color: blanchedalmond;
+} */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.logo {
+  width: 100px;
+  height: 122px;
+  padding: 10px;
+}
+
+.nav-items {
+  padding: 10px;
+}
+
+.nav-items > ul {
+  font-size: 24px;
+  display: flex;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+  list-style-type: none;
+}
+
+.res-card {
+  padding: 5px;
+  background-color: rgb(237, 230, 221);
+  width: 250px;
+  margin:5px;
+}
+
+.res-card:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.search {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.res-logo {
+  width: 100%;
+}
+
+.res-container{
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-item{
+  background-color: rgb(193, 197, 202);
+  padding: 5px;
+  width: 250px;
+  margin:5px;
+  height: 300px;
+}
+
+.login-button{
+  padding: 0 20px;
+  cursor: pointer;
+}
