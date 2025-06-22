@@ -75,10 +75,9 @@ const Body = () => {
           <Shimmer />
         ) : (
           filteredRes?.map((item, index) => {
-            console.log(item);
             return (
-              <Link to={"/restaurants/" + item.info.id}>
-                <RestaurantCard key={index} restaurants={item} />
+              <Link key={index} to={"/restaurants/" + item.info.id}>
+                <RestaurantCard restaurants={item} />
               </Link>
             );
           })

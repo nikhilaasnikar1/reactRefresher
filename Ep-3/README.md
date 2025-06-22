@@ -68,3 +68,27 @@ rafce -- shortcut to create a component
 ==========
 
 <Link>  react router dom
+
+===========
+
+CLass components
+
+- First when the class components are instantiated the constructer mount and then the render()
+  will mount and last will be componentDidMount()
+
+- but if parent has muliple child then flow changes- https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/.
+
+- Render Phase
+- Commit Phase
+
+Example
+
+- Parent constructor called
+- Parent render() called
+  -- First child constructor called
+  -- First Child render called
+  -- second child constructor called
+  -- second child render() is called
+  -- First child ComponentDidMount called
+  -- Second Child ComponentDidMount Called
+- Parent ComponentDidMount called
