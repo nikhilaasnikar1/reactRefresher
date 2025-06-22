@@ -80,3 +80,8 @@
   padding: 10px;
   border: 1px solid black;
 }
+
+.avatar{
+  height: 200px;
+  width: 200px;
+}

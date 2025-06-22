@@ -30,6 +30,7 @@ class AboutUs extends React.Component {
       <div>
         <h1>About</h1>
         <h2>This is about Us page </h2>
+        <User />
         <UserClass
           name={"Nikhil"}
           location={"Dublin"}
