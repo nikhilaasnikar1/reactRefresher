@@ -103,3 +103,8 @@ To Scale large scale application
 - Dynamic Bundling
 - Lazy Loading
 - on Demand loading
+
+Logical splitting the application into smaller bundles
+multiple js files of smaller size will optimize performance
+
+-Lazy loading/ On demand loading
