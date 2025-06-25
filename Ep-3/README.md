@@ -92,3 +92,14 @@ Example
   -- First child ComponentDidMount called
   -- Second Child ComponentDidMount Called
 - Parent ComponentDidMount called
+
+---
+
+To Optimize the applcation and reduce js file
+To Scale large scale application
+
+- Chunking
+- Code Spliting
+- Dynamic Bundling
+- Lazy Loading
+- on Demand loading
