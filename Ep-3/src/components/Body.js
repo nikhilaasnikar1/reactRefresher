@@ -1,32 +1,36 @@
-import { restaurants } from "./RestaurantsData";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import TopButton from "./Button";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
-  const [listOfRes, setlistOfRes] = useState([]);
   const [searchText, setsearchText] = useState("");
   const [filteredRes, setFilteredRes] = useState([]);
+  const onlineStatus = useOnlineStatus();
+  const listOfRes = useRestaurantList(); //This hook contains a API call to fetch the data and return
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setFilteredRes(listOfRes);
+  }, [listOfRes]);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data?.json();
-
-    setlistOfRes(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRes(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+  const top10Res = () => {
+    const filtered = listOfRes.filter((res) => res.info.avgRating > 4.5);
+    setFilteredRes(filtered);
   };
+
+  const filterBySearch = () => {
+    //  Filter based on search input
+    const filteredRestaurant = listOfRes.filter((res) =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    setFilteredRes(filteredRestaurant);
+  };
+
+  if (!onlineStatus) return <h1>Looks like you are Offline</h1>;
 
   return (
     <div className="body">
@@ -39,18 +43,7 @@ const Body = () => {
             setsearchText(e.target.value);
           }}
         ></input>
-        <button
-          onClick={() => {
-            //  Filter based on search input
-            const filteredRestaurant = listOfRes.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
-            );
-
-            setFilteredRes(filteredRestaurant);
-          }}
-        >
-          search
-        </button>
+        <button onClick={filterBySearch}>search</button>
         <TopButton
           size="large"
           label={"Top rated Restaurants"}
@@ -62,16 +55,11 @@ const Body = () => {
             color: "white",
             margin: "20px",
           }}
-          onClick={() => {
-            const filtered = listOfRes.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setFilteredRes(filtered);
-          }}
+          onClick={top10Res}
         />
       </div>
       <div className="res-container">
-        {listOfRes?.length === 0 ? (
+        {filteredRes.length === 0 ? (
           <Shimmer />
         ) : (
           filteredRes?.map((item, index) => {
