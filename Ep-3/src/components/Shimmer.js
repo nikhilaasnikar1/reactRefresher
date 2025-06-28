@@ -1,21 +1,16 @@
+import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
+
 const Shimmer = () => {
   return (
-    <div className="shimmer-container">
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-      <div className="shimmer-item"></div>
-    </div>
+    <Card
+      sx={{
+        backgroundColor: "#ddd7d5",
+        padding: " 5px",
+        width: "250px",
+        margin: "5px",
+        height: "300px",
+      }}
+    ></Card>
   );
 };
 

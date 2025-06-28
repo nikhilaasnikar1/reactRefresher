@@ -108,3 +108,7 @@ Logical splitting the application into smaller bundles
 multiple js files of smaller size will optimize performance
 
 -Lazy loading/ On demand loading
+
+---
+
+SaaS / ScSS /Styled components / Tailwind Css/ MUi / Chakra Ui/ Ant Design

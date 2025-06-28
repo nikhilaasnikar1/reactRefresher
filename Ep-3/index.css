@@ -1,7 +1,9 @@
-/* .app{
-    background-color: blanchedalmond;
-} */
+@import "tailwindcss";
 
+.app{
+    background-color: "#fff8e7";
+}
+/* 
 .header {
   display: flex;
   justify-content: space-between;
@@ -84,4 +86,4 @@
 .avatar{
   height: 200px;
   width: 200px;
-}
+} */
