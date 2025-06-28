@@ -5,12 +5,14 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantList from "../utils/useRestaurantList";
+import { TextField, Button, Grid, Box } from "@mui/material";
 
 const Body = () => {
   const [searchText, setsearchText] = useState("");
   const [filteredRes, setFilteredRes] = useState([]);
   const onlineStatus = useOnlineStatus();
   const listOfRes = useRestaurantList(); //This hook contains a API call to fetch the data and return
+  const shimmerArr = new Array(6);
 
   useEffect(() => {
     setFilteredRes(listOfRes);
@@ -34,16 +36,29 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="search">
-        <input
+      <div
+        className="search"
+        style={{
+          display: "flex",
+
+          margin: "5px",
+          padding: "10px",
+        }}
+      >
+        <TextField
+          id="outlined-basic"
+          label="Search.."
+          variant="outlined"
           type="text"
           className="search-box"
           value={searchText}
           onChange={(e) => {
             setsearchText(e.target.value);
           }}
-        ></input>
-        <button onClick={filterBySearch}>search</button>
+          sx={{ margin: "0 5px 0 5px" }}
+          size="small"
+        ></TextField>
+        <Button onClick={filterBySearch}>search</Button>
         <TopButton
           size="large"
           label={"Top rated Restaurants"}
@@ -53,24 +68,46 @@ const Body = () => {
             padding: "8px 16px",
             fontSize: "16px",
             color: "white",
-            margin: "20px",
+            backgroundColor: "#f8932e",
+            margin: "0 5px 0 5px",
+            // margin: "20px",
           }}
           onClick={top10Res}
         />
       </div>
-      <div className="res-container">
-        {filteredRes.length === 0 ? (
-          <Shimmer />
-        ) : (
-          filteredRes?.map((item, index) => {
-            return (
-              <Link key={index} to={"/restaurants/" + item.info.id}>
-                <RestaurantCard restaurants={item} />
-              </Link>
-            );
-          })
-        )}
-      </div>
+      <Box
+        sx={{
+          width: "100%",
+          padding: 2,
+        }}
+      >
+        <Grid
+          container
+          spacing={3}
+          justifyContent="center"
+          // sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+        >
+          {filteredRes.length === 0 ? (
+            <Grid item sx={{ display: "flex", flexDirection: "row" }}>
+              {Array(6)
+                .fill(null)
+                .map((index) => (
+                  <Shimmer />
+                ))}
+            </Grid>
+          ) : (
+            filteredRes?.map((item, index) => {
+              return (
+                <Grid item xs={12} sm={6} md={4} lg={3} spacing={1}>
+                  <Link key={index} to={"/restaurants/" + item.info.id}>
+                    <RestaurantCard restaurants={item} />
+                  </Link>
+                </Grid>
+              );
+            })
+          )}
+        </Grid>
+      </Box>
     </div>
   );
 };
